@@ -1,0 +1,68 @@
+//regular theme
+:root.dark-theme {
+    --text-color:#fff;
+    --body-background:#3A4663;
+    --background-inner:#242D44;
+    --dashboard-bg:#181F33;
+
+    --btn-background:#EAE3DC;
+    --btn-border1:#B3A497;
+    --btn-color:#434A59;
+    
+    //del and reset btn
+    --btn-type2-background:#647198;
+    --btn-type2-border:#414E73;
+    --btn-color2:#fff;
+    
+    //equals button
+    --btn-type3-background:#D03F2F;
+    --btn-type3-border:#93261A;
+    
+    --btn-equals-color:#fff;
+}
+
+//light theme
+:root.light-theme {
+    --text-color:#36362C;
+    --body-background:#E6E6E6;
+    --background-inner:#D2CDCD;
+    --dashboard-bg:#EEEEEE;
+
+    --btn-background:#E5E4E1;
+    --btn-border1:#A79E91;
+    --btn-color:#434A59;
+    
+    //del and reset btn
+    --btn-type2-background:#378187;
+    --btn-type2-border:#1B6066;
+    --btn-color2:#fff;
+    
+    //equals button
+    --btn-type3-background:#C85402;
+    --btn-type3-border:#873901;
+    
+    --btn-equals-color:#fff;
+}
+
+:root.purple-theme {
+    --text-color:#FFE53D;
+    --body-background:#17062A;
+    --background-inner:#1E0936;
+    --dashboard-bg:#1E0936;
+
+    --btn-background:#331C4D;
+    --btn-border1:#881C9E;
+    --btn-color:#FFE53D;
+    
+    //del and reset btn
+    --btn-type2-background:#56077C;
+    --btn-type2-border:#BE15F4;
+    --btn-color2:#fff;
+    
+    //equals button
+    --btn-type3-background:#00DED0;
+    --btn-type3-border:#6CF9F1;
+    
+    --btn-equals-color:#1A2327;
+}
+

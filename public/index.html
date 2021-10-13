@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light-theme"> <!-- class 'light-theme' added just in case, but should be changed with color-scheme.js execution -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,33 +15,73 @@
   <link rel="stylesheet" href="css/style.css">
   
   <!-- JavaScript -->
+  <script src="js/color-scheme.js" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body>  
   <div class="container">
     <div class="calculator-container">
-      <div class="calc-head">
 
+      <!-- Logo and theme toggle section  -->
+      <section class="calc-head">
+        
         <h1 class="main-heading">calc</h1>
-
+        
         <div class="theme-switcher">
-            <span class="title">Theme</span>
-            <div class="theme-btn text-center">
-              <label for='theme1'>1</label>
-              <input type="radio" name="theme" id="theme1">
+          <span class="title uppercase">theme</span>
+
+          <div>
+            <div class="theme-labels text-center">
+              <label for='theme1' class="theme-label">1</label>
+              <label for='theme2' class="theme-label">2</label>
+              <label for='theme3' class="theme-label">3</label>
             </div>
             
-            <div class="theme-btn text-center">
-              <label for='theme2'>2</label>
-              <input type="radio" name="theme" id="theme2">
+            <div class="theme-btns-container text-center">
+              <input type="radio" name="theme" id="theme1" class="theme-button" value="dark-theme">
+              <input type="radio" name="theme" id="theme2" class="theme-button" value="light-theme">
+              <input type="radio" name="theme" id="theme3" class="theme-button" value="purple-theme">
             </div>
-            
-            <div class="theme-btn text-center">
-              <label for='theme3'>3</label>
-              <input type="radio" name="theme" id="theme3">
-            </div>
+          </div>
+        
         </div>
-      </div>
+      </section>
+
+      <!-- Dashboard display section -->
+      <section class="dashboard">
+        <div class="dashboard-text main-heading"></div>
+      </section>
+
+
+      <!-- calculator buttons section -->
+      <section class="calc-buttons">
+
+        <button class="btn">7</button>
+        <button class="btn">8</button>
+        <button class="btn">9</button>
+
+        <button class="btn font-16 del">del</button>
+
+        <button class="btn">4</button>
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+
+        <button class="btn">+</button>
+
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+
+        <button class="btn">-</button>
+
+        <button class="btn">.</button>
+        <button class="btn">0</button>
+        <button class="btn">/</button>
+        <button class="btn">x</button>
+
+        <button class="btn font-16 reset">reset</button>
+        <button class="btn font-16 equals">=</button>
+      </section>
     </div>
   </div>
   
