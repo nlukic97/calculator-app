@@ -1,3 +1,49 @@
+.main-heading {
+  font-size: 32px;
+  letter-spacing: -0.53px;
+  font-weight: 700;
+}
 
+.theme-switcher {
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  padding: 0 9%;
+}
+
+*, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+}
+
+.calculator-container {
+  border: 1px solid red;
+}
+.calculator-container .calc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calculator-container .calc-head .theme-switcher span.title {
+  text-transform: uppercase;
+}
+.calculator-container .calc-head .theme-switcher .theme-btn {
+  display: inline-block;
+  padding: 0 2px;
+}
+.calculator-container .calc-head .theme-switcher .theme-btn label {
+  display: block;
+}
 
 /*# sourceMappingURL=style.css.map */

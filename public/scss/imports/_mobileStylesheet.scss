@@ -1,0 +1,37 @@
+.container {
+    padding: 0 9%;
+}
+
+*, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 700;
+}
+
+.calculator-container {
+    border: 1px solid red;
+
+    .calc-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .theme-switcher {
+            span.title {
+                text-transform: uppercase;
+            }
+            .theme-btn {
+                display: inline-block;
+                padding: 0 2px;
+
+                label {
+                    display: block;
+                }
+            }
+        }
+    }
+}

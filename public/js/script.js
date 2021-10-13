@@ -1,6 +1,6 @@
 let formula = '-4'
 
-//adding a +, -, *, /, or .
+//adding a +, -, *, /, or . to 'formula'
 function newOperation(symbol){
     if(isLastCharInteger(formula)){
         formula += symbol
@@ -17,22 +17,16 @@ function newNumber(number){
 //returns true if the last character is an integer (specifically, if it is not a mathemathical operation or a dot/comma)
 function isLastCharInteger(string){
     let char = string[string.length-1]
-    
-    if(char == '-' || char == '+' || char == '*' || char == '/' || char == '.'){
-        return false
-    } else {
-        return true
-    }
+    return (char == '-' || char == '+' || char == '*' || char == '/' || char == '.')? false : true;
 }
 
 // function 
 function calculate(givenNumbers){
     //will not execute if user presses = before entering anything
-    if(givenNumbers === ''){
-        return null
-    }
+    if(givenNumbers === '') return null
 
-    while(isLastCharInteger(givenNumbers) === false){ //removing all the hanging symbols from the end in case there are any (just in case, maybe it's not necessary)
+    //removing all the hanging symbols from the end in case there are any (just in case, maybe it's not necessary)
+    while(isLastCharInteger(givenNumbers) === false){ 
         givenNumbers = removeLastChar(givenNumbers)
     }
 
