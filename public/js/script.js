@@ -1,5 +1,10 @@
 let formula = ''
 
+//init
+addListeners()
+
+
+/** ---------- Methods ---------- */
 //adding a +, -, *, /, or . to 'formula'
 function newOperation(symbol){
     if(isLastCharInteger(formula)){
@@ -9,10 +14,12 @@ function newOperation(symbol){
     }
 }
 
+
 //adding a number from the calculator
 function newNumber(number){
     formula += number
 }
+
 
 // function to calculate final result
 function calculate(givenNumbers){
@@ -30,9 +37,11 @@ function calculate(givenNumbers){
     return Function('return (' + givenNumbers + ')')().toString();
 }
 
+
 function removeLastChar(string){
     return string.substring(0,string.length-1)
 }
+
 
 function updateDashboard(querySelector, value){
     if(value != ''){
@@ -41,15 +50,18 @@ function updateDashboard(querySelector, value){
     document.querySelector(querySelector).innerText = value
 }
 
+
 function isFormulaEmpty(sring){
     return (string === '' || string === null) ? true : false;
 }
+
 
 //returns true if the last character is an integer (specifically, if it is not a mathemathical operation or a dot/comma)
 function isLastCharInteger(string){
     let char = string[string.length-1]
     return (char == '-' || char == '+' || char == '*' || char == '/' || char == '.') ? false : true;
 }
+
 
 //adding event listeners for all the calculator buttons
 function addListeners(){
@@ -93,12 +105,3 @@ function addListeners(){
         })
     })
 }
-
-
-//init
-addListeners()
-
-/*
-- the first thing a user types cannot be / or x(*)
-- the last thing cannot be a symbol
-*/
