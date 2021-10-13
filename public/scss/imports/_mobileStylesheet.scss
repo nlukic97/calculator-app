@@ -14,6 +14,8 @@ body {
 
 .calculator-container {
     border: 1px solid red;
+    background-color: $color-background-1;
+    color: #fff;
 
     .calc-head {
         display: flex;
@@ -21,15 +23,45 @@ body {
         align-items: center;
 
         .theme-switcher {
-            span.title {
-                text-transform: uppercase;
-            }
-            .theme-btn {
-                display: inline-block;
-                padding: 0 2px;
+            display: flex;
+            align-items: flex-end;
 
-                label {
-                    display: block;
+            .title {
+                padding: 0 20px 5px 0;
+            }
+
+            .theme-labels {
+                padding: 2px 5px;
+                display: flex;
+                justify-content: space-between;
+
+                .theme-label {
+                    width: 16px;
+                    height: 16px;
+                    display: inline-block;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .theme-btns-container {
+                background-color: $color-dashboard-1;
+                border-radius: 13px;
+                display: flex;
+                padding: 5px;
+
+                .theme-button {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+
+                    margin-right: 7px;
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
                 }
             }
         }
