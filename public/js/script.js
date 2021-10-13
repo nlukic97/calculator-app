@@ -29,6 +29,10 @@ function calculate(givenNumbers){
     while(isLastCharInteger(givenNumbers) === false){ 
         givenNumbers = removeLastChar(givenNumbers)
     }
+
+    if(givenNumbers === ''){
+        return givenNumbers;
+    }
     
     return Function('return (' + givenNumbers + ')')().toString();
 }
@@ -38,7 +42,7 @@ function removeLastChar(string){
 }
 
 function updateDashboard(querySelector, value){
-    if(value != '' && value != null){
+    if(value != ''){
         value.replaceAll('*','x')
     }
     document.querySelector(querySelector).innerText = value
@@ -59,15 +63,24 @@ function addListeners(){
             if(!isNaN(char)){
                 newNumber(char)
 
-            } else if(char == '-' || char == '+'|| char == '/' || char == '.'){
+            } else if(char == '-' || char == '+'){
                 newOperation(char)
                 
-            } else if(char == 'x') {
+            }  else if(char == '/' || char == '.'){
+                if(formula === ''){
+                    return //do not allow symbol to be added
+                }
+                newOperation(char)
+            }
+            
+            else if(char == 'x') {
+                if(formula === ''){
+                    return //do not allow symbol to be added
+                }
                 newOperation('*')
                 
             } else if(char == '='){
                 formula = calculate(formula);
-                console.log(formula);
 
             } else if(char.toLowerCase() == 'del'){
                 formula = removeLastChar(formula)
