@@ -1,0 +1,38 @@
+button.btn {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.47px;
+    padding: 10px 0;
+    border-radius: 5px;
+    display: inline-block;
+
+    outline: none;
+    border: none;
+    border-bottom: 4px solid #B3A497;
+    
+    font-family: 'Spartan', sans-serif;
+    background-color: $number-bg-color-1;
+    
+    color: $number-color-1;
+
+    &.font-16 {
+        font-size: 16px;
+    }
+    
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.del, &.reset {
+        background-color: $del-res-bg-1;
+        color: #fff;
+        border-bottom: 4px solid #414E73;
+        text-transform: uppercase;
+    }
+    
+    &.equals {
+        background-color: $equals-bg-1;
+        color: #fff;
+        border-bottom: 4px solid #93261A;
+    }
+}
