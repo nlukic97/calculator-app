@@ -7,6 +7,8 @@
 *, body {
     margin: 0;
     padding: 0;
+    background-color: $color-background-1;
+    
 }
 
 body {
@@ -15,15 +17,15 @@ body {
 }
 
 
+
 // calculator head component
 .calc-head {
     margin-top: 30px;
-    color: #fff;
+    color: $text-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $color-background-1;
-    
+
     .theme-switcher {
         display: flex;
         align-items: flex-end;
@@ -41,6 +43,10 @@ body {
                 width: 16px;
                 height: 16px;
                 display: inline-block;
+
+                &:hover {
+                    cursor: pointer;
+                }
                 
                 &:last-child {
                     margin-right: 0;
@@ -55,14 +61,33 @@ body {
             padding: 5px;
             
             .theme-button {
-                display: inline-block;
                 width: 16px;
-                height: 16px;
-                
+                height: 16px;                
                 margin-right: 7px;
+                position: relative;
+                opacity: 0;
+
+                &:checked {
+                    opacity: 1;
+
+                    &::after {
+                        content:'';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 16px;
+                        height: 16px;
+                        background-color: $equals-bg-1;
+                        border-radius: 50%;
+                    }
+                }
                 
                 &:last-child {
                     margin-right: 0;
+                }
+
+                &:hover {
+                    cursor: pointer;
                 }
             }
         }
@@ -72,7 +97,7 @@ body {
 
 // Dashboard component
 .dashboard {
-    color: #fff;
+    color: $text-color;
     background-color: $color-dashboard-1;
     padding: 24px;
     text-align: right;
@@ -86,10 +111,14 @@ body {
 
     .dashboard-text {
         line-break: anywhere;
+        background-color: transparent;
     }
 }
 
 .calc-buttons {
+    margin-top: 25px;
+    background-color: $color-theme-picker-1;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 13px;

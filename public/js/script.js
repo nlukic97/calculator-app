@@ -14,13 +14,7 @@ function newNumber(number){
     formula += number
 }
 
-//returns true if the last character is an integer (specifically, if it is not a mathemathical operation or a dot/comma)
-function isLastCharInteger(string){
-    let char = string[string.length-1]
-    return (char == '-' || char == '+' || char == '*' || char == '/' || char == '.') ? false : true;
-}
-
-// function 
+// function to calculate final result
 function calculate(givenNumbers){
     //will not execute if user presses = before entering anything
     if(givenNumbers === '') return '';
@@ -33,7 +27,6 @@ function calculate(givenNumbers){
     if(givenNumbers === ''){
         return givenNumbers;
     }
-    
     return Function('return (' + givenNumbers + ')')().toString();
 }
 
@@ -52,7 +45,13 @@ function isFormulaEmpty(sring){
     return (string === '' || string === null) ? true : false;
 }
 
+//returns true if the last character is an integer (specifically, if it is not a mathemathical operation or a dot/comma)
+function isLastCharInteger(string){
+    let char = string[string.length-1]
+    return (char == '-' || char == '+' || char == '*' || char == '/' || char == '.') ? false : true;
+}
 
+//adding event listeners for all the calculator buttons
 function addListeners(){
     let btns = document.querySelectorAll('.calc-buttons .btn')
     

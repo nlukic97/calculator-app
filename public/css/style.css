@@ -66,6 +66,7 @@ button.btn:active {
 *, body {
   margin: 0;
   padding: 0;
+  background-color: #3A4663;
 }
 
 body {
@@ -79,7 +80,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3A4663;
 }
 .calc-head .theme-switcher {
   display: flex;
@@ -98,6 +98,9 @@ body {
   height: 16px;
   display: inline-block;
 }
+.calc-head .theme-switcher .theme-labels .theme-label:hover {
+  cursor: pointer;
+}
 .calc-head .theme-switcher .theme-labels .theme-label:last-child {
   margin-right: 0;
 }
@@ -108,13 +111,30 @@ body {
   padding: 5px;
 }
 .calc-head .theme-switcher .theme-btns-container .theme-button {
-  display: inline-block;
   width: 16px;
   height: 16px;
   margin-right: 7px;
+  position: relative;
+  opacity: 0;
+}
+.calc-head .theme-switcher .theme-btns-container .theme-button:checked {
+  opacity: 1;
+}
+.calc-head .theme-switcher .theme-btns-container .theme-button:checked::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #D03F2F;
+  border-radius: 50%;
 }
 .calc-head .theme-switcher .theme-btns-container .theme-button:last-child {
   margin-right: 0;
+}
+.calc-head .theme-switcher .theme-btns-container .theme-button:hover {
+  cursor: pointer;
 }
 
 .dashboard {
@@ -132,9 +152,13 @@ body {
 }
 .dashboard .dashboard-text {
   line-break: anywhere;
+  background-color: transparent;
 }
 
 .calc-buttons {
+  margin-top: 25px;
+  background-color: #242D44;
+  border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 13px;
