@@ -35,4 +35,8 @@ button.btn {
         color: #fff;
         border-bottom: 4px solid #93261A;
     }
+
+    &:active {
+        transform: scale(0.95);
+    }
 }

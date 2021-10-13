@@ -74,10 +74,15 @@ body {
 .dashboard {
     color: #fff;
     background-color: $color-dashboard-1;
-    text-align: right;
     padding: 24px;
+    text-align: right;
     border-radius: 10px;
     margin-top: 30px;
+    min-height: 128px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 
     .dashboard-text {
         line-break: anywhere;

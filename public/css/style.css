@@ -53,6 +53,9 @@ button.btn.equals {
   color: #fff;
   border-bottom: 4px solid #93261A;
 }
+button.btn:active {
+  transform: scale(0.95);
+}
 
 .container {
   padding: 0 9%;
@@ -117,10 +120,15 @@ body {
 .dashboard {
   color: #fff;
   background-color: #181F33;
-  text-align: right;
   padding: 24px;
+  text-align: right;
   border-radius: 10px;
   margin-top: 30px;
+  min-height: 128px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: right;
 }
 .dashboard .dashboard-text {
   line-break: anywhere;
