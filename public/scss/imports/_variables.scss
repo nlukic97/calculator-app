@@ -1,11 +1,34 @@
-//theme 1
-$color-background-1:#3A4663;
-$color-theme-picker-1: #242D44;
-$color-dashboard-1:#181F33;
 
-$number-bg-color-1:#EAE3DC;
-$number-color-1:#434A59;
 
-$equals-bg-1:#D03F2F;
-$del-res-bg-1:#647198;
-$text-color:#fff;
+
+
+
+
+//regular theme
+:root.regular {
+    --text-color:#fff;
+    --body-background:#3A4663;
+    --background-inner:#242D44;
+    --dashboard-bg:#181F33;
+
+    --btn-background:#EAE3DC;
+    --btn-border1:#B3A497;
+    --btn-color:#434A59;
+    
+    //del and reset btn
+    --btn-type2-background:#647198;
+    --btn-type2-border:#414E73;
+    --btn-color2:#fff;
+    
+    //equals button
+    --btn-type3-background:#D03F2F;
+    --btn-type3-border:#93261A;
+    
+
+    --btn-equals-color:#fff;
+
+
+
+
+}
+

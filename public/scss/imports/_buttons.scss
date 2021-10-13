@@ -8,13 +8,27 @@ button.btn {
 
     outline: none;
     border: none;
-    border-bottom: 4px solid #B3A497;
     
     font-family: 'Spartan', sans-serif;
-    background-color: $number-bg-color-1;
+    background-color: var(--btn-background);
+    border-bottom: 4px solid var(--btn-border1);
     
-    color: $number-color-1;
+    color: var(--btn-color);
 
+    
+    &.del, &.reset {
+        background-color: var(--btn-type2-background);
+        color: var(--btn-color2);
+        border-bottom: 4px solid var(--btn-type2-border);
+        text-transform: uppercase;
+    }
+    
+    &.equals {
+        background-color: var(--btn-type3-background);
+        color: var(--btn-equals-color);
+        border-bottom: 4px solid var(--btn-type3-border);
+    }
+    
     &.font-16 {
         font-size: 16px;
     }
@@ -22,20 +36,7 @@ button.btn {
     &:hover {
         cursor: pointer;
     }
-
-    &.del, &.reset {
-        background-color: $del-res-bg-1;
-        color: #fff;
-        border-bottom: 4px solid #414E73;
-        text-transform: uppercase;
-    }
     
-    &.equals {
-        background-color: $equals-bg-1;
-        color: #fff;
-        border-bottom: 4px solid #93261A;
-    }
-
     &:active {
         transform: scale(0.95);
     }

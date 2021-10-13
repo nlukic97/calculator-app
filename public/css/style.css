@@ -1,3 +1,19 @@
+:root.regular {
+  --text-color:#fff;
+  --body-background:#3A4663;
+  --background-inner:#242D44;
+  --dashboard-bg:#181F33;
+  --btn-background:#EAE3DC;
+  --btn-border1:#B3A497;
+  --btn-color:#434A59;
+  --btn-type2-background:#647198;
+  --btn-type2-border:#414E73;
+  --btn-color2:#fff;
+  --btn-type3-background:#D03F2F;
+  --btn-type3-border:#93261A;
+  --btn-equals-color:#fff;
+}
+
 .main-heading {
   font-size: 32px;
   letter-spacing: -0.53px;
@@ -31,27 +47,27 @@ button.btn {
   display: inline-block;
   outline: none;
   border: none;
-  border-bottom: 4px solid #B3A497;
   font-family: "Spartan", sans-serif;
-  background-color: #EAE3DC;
-  color: #434A59;
+  background-color: var(--btn-background);
+  border-bottom: 4px solid var(--btn-border1);
+  color: var(--btn-color);
+}
+button.btn.del, button.btn.reset {
+  background-color: var(--btn-type2-background);
+  color: var(--btn-color2);
+  border-bottom: 4px solid var(--btn-type2-border);
+  text-transform: uppercase;
+}
+button.btn.equals {
+  background-color: var(--btn-type3-background);
+  color: var(--btn-equals-color);
+  border-bottom: 4px solid var(--btn-type3-border);
 }
 button.btn.font-16 {
   font-size: 16px;
 }
 button.btn:hover {
   cursor: pointer;
-}
-button.btn.del, button.btn.reset {
-  background-color: #647198;
-  color: #fff;
-  border-bottom: 4px solid #414E73;
-  text-transform: uppercase;
-}
-button.btn.equals {
-  background-color: #D03F2F;
-  color: #fff;
-  border-bottom: 4px solid #93261A;
 }
 button.btn:active {
   transform: scale(0.95);
@@ -66,7 +82,7 @@ button.btn:active {
 *, body {
   margin: 0;
   padding: 0;
-  background-color: #3A4663;
+  background-color: var(--body-background);
 }
 
 body {
@@ -76,7 +92,7 @@ body {
 
 .calc-head {
   margin-top: 30px;
-  color: #fff;
+  color: var(--text-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -105,7 +121,7 @@ body {
   margin-right: 0;
 }
 .calc-head .theme-switcher .theme-btns-container {
-  background-color: #242D44;
+  background-color: var(--background-inner);
   border-radius: 13px;
   display: flex;
   padding: 5px;
@@ -127,7 +143,7 @@ body {
   left: 0;
   width: 16px;
   height: 16px;
-  background-color: #D03F2F;
+  background-color: var(--btn-equals-background);
   border-radius: 50%;
 }
 .calc-head .theme-switcher .theme-btns-container .theme-button:last-child {
@@ -138,8 +154,8 @@ body {
 }
 
 .dashboard {
-  color: #fff;
-  background-color: #181F33;
+  color: var(--text-color);
+  background-color: var(--dashboard-bg);
   padding: 24px;
   text-align: right;
   border-radius: 10px;
@@ -157,7 +173,7 @@ body {
 
 .calc-buttons {
   margin-top: 25px;
-  background-color: #242D44;
+  background-color: var(--background-inner);
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
