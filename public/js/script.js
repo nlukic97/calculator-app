@@ -1,7 +1,7 @@
-let formula = ''
-
 //init
+let formula = ''
 addListeners()
+
 
 
 /** ---------- Methods ---------- */
@@ -21,6 +21,7 @@ function newNumber(number){
 }
 
 
+
 // function to calculate final result
 function calculate(givenNumbers){
     //will not execute if user presses = before entering anything
@@ -35,12 +36,11 @@ function calculate(givenNumbers){
         return givenNumbers;
     }
     
-    let arrayOfOperations = stringToArr(formula)
+    let arrayOfOperations = stringToArr(givenNumbers)
     let result = performCalculation(arrayOfOperations)[0]
     return result.toString()
     
 }
-
 
 
 
@@ -49,12 +49,14 @@ function removeLastChar(string){
 }
 
 
+
 function updateDashboard(querySelector, value){
     if(value != ''){
         value.replaceAll('*','x')
     }
     document.querySelector(querySelector).innerText = value
 }
+
 
 
 function isFormulaEmpty(sring){
@@ -67,6 +69,77 @@ function isLastCharInteger(string){
     let char = string[string.length-1]
     return (char == '-' || char == '+' || char == '*' || char == '/' || char == '.') ? false : true;
 }
+
+
+
+// to make an array from the formula string, so that it can be looped through
+function stringToArr(string){
+    string = string.replaceAll('-',' - ').replaceAll('+',' + ').replaceAll('*',' * ').replaceAll('/',' / ').trim(' ').split(' ');
+    
+    if(string[0] === '-' || string[0] === '+'){
+        string[1] = string[0] + string[1]
+        string.shift()
+    }
+    return string;
+
+}
+
+
+//function. Default values that must be present
+function performCalculation(arr, symbol1 = '*',symbol2 = '/'){
+
+    //If the reccursive function passes in an array with 1 value, this value is the result
+    if(arr.length <= 1){
+        return arr; //the result
+    }
+
+    var found = false;
+    var i = 0;    
+
+    while(found === false && i <= arr.length - 1){        
+        if(arr[i] === symbol1 || arr[i] === symbol2){
+            found = true;
+
+            arr[i] = window[operations[arr[i]]](arr[i-1], arr[i+1])
+            arr.splice(i+1,1); arr.splice(i-1,1);
+
+            //reccursive method to continue searching for and perform the same reccursive function
+            return performCalculation(arr,symbol1,symbol2)
+
+        } 
+        i++; 
+    }
+
+    // this means that this round of the while loop did not find any * or / operations, time to move to + and -
+    if(found === false) return performCalculation(arr,'+','-');
+
+}
+
+
+const operations = {
+    '*':'multiply',
+    '/':'divide',
+    '+':'add',
+    '-':'subtract',
+}
+
+
+// operations - will be called based on the operations keys in the performCalculation method
+function add(x,y){
+    return parseFloat(x) + parseFloat(y)
+}
+
+function subtract(x,y){
+    return parseFloat(x) - parseFloat(y)
+}
+
+function multiply(x,y){
+    return parseFloat(x) * parseFloat(y)
+}
+function divide(x,y){
+    return parseFloat(x) / parseFloat(y)
+}
+
 
 
 //adding event listeners for all the calculator buttons
@@ -112,78 +185,3 @@ function addListeners(){
         })
     })
 }
-
-
-
-function stringToArr(string){
-    // var symbolArr = '25-1.333/2-2-2*2-3*2/12'
-    string = string.replaceAll('-',' - ').replaceAll('+',' + ').replaceAll('*',' * ').replaceAll('/',' / ').trim(' ').split(' ');
-    
-    if(string[0] === '-' || string[0] === '+'){
-        string[1] = string[0] + string[1]
-        string.shift()
-    }
-
-    return string;
-
-}
-
-
-//function. Default values that must be present
-function performCalculation(arr, symbol1 = '*',symbol2 = '/'){
-    if(arr.length <= 1){
-        return arr;
-    }
-
-    var found = false;
-    var i = 0;    
-
-    while(found === false && i <= arr.length - 1){        
-        if(arr[i] === symbol1 || arr[i] === symbol2){
-            found = true;
-
-            arr[i] = window[operations[arr[i]]](arr[i-1], arr[i+1])
-            arr.splice(i+1,1); arr.splice(i-1,1);
-
-            //reccursive method to continue searching for and perform multiplication and division
-            return performCalculation(arr,'*','/')
-
-        } 
-
-        i++;
-        
-    }
-
-    if(found === false){ // this means that this round of the while loop did not find any * or / operations, time to move to + and -
-         
-        //reccursive method to search for and perform multiplication and division
-        return performCalculation(arr,'+','-')
-    }
-
-}
-
-
-const operations = {
-    '*':'multiply',
-    '/':'divide',
-    '+':'add',
-    '-':'subtract',
-}
-
-
-// operations - will be called based on the operations keys in the performCalculation method
-function add(x,y){
-    return parseFloat(x) + parseFloat(y)
-}
-
-function subtract(x,y){
-    return parseFloat(x) - parseFloat(y)
-}
-
-function multiply(x,y){
-    return parseFloat(x) * parseFloat(y)
-}
-function divide(x,y){
-    return parseFloat(x) / parseFloat(y)
-}
-
