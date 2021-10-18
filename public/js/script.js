@@ -87,31 +87,28 @@ function stringToArr(string){
 
 //function. Default values that must be present
 function performCalculation(arr, symbol1 = '*',symbol2 = '/'){
-
-    //If the reccursive function passes in an array with 1 value, this value is the result
-    if(arr.length <= 1){
-        return arr; //the result
-    }
-
     var found = false;
     var i = 0;    
 
-    while(found === false && i <= arr.length - 1){        
+    while(found === false && i < arr.length - 1){    //using < than, since the last symbol will always be a number because of the validation perfomed in the method 'calculate'
         if(arr[i] === symbol1 || arr[i] === symbol2){
             found = true;
 
             arr[i] = window[operations[arr[i]]](arr[i-1], arr[i+1])
             arr.splice(i+1,1); arr.splice(i-1,1);
 
-            //reccursive method to continue searching for and perform the same reccursive function
-            return performCalculation(arr,symbol1,symbol2)
-
+            //reccursive method to continue searching for and perform the same reccursive function only if array's length is more than 1
+            if(arr.length <= 1){
+                return arr; //the result
+            } else {
+                return performCalculation(arr,symbol1,symbol2)
+            }
         } 
         i++; 
     }
 
     // this means that this round of the while loop did not find any * or / operations, time to move to + and -
-    if(found === false) return performCalculation(arr,'+','-');
+    return performCalculation(arr,'+','-');
 
 }
 
