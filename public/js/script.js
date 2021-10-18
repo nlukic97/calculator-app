@@ -1,7 +1,7 @@
-let formula = ''
-
 //init
+let formula = ''
 addListeners()
+
 
 
 /** ---------- Methods ---------- */
@@ -21,6 +21,7 @@ function newNumber(number){
 }
 
 
+
 // function to calculate final result
 function calculate(givenNumbers){
     //will not execute if user presses = before entering anything
@@ -30,17 +31,23 @@ function calculate(givenNumbers){
     while(isLastCharInteger(givenNumbers) === false){ 
         givenNumbers = removeLastChar(givenNumbers)
     }
-
+    
     if(givenNumbers === ''){
         return givenNumbers;
     }
-    return Function('return (' + givenNumbers + ')')().toString();
+    
+    let arrayOfOperations = stringToArr(givenNumbers)
+    let result = performCalculation(arrayOfOperations)[0]
+    return result.toString()
+    
 }
+
 
 
 function removeLastChar(string){
     return string.substring(0,string.length-1)
 }
+
 
 
 function updateDashboard(querySelector, value){
@@ -49,6 +56,7 @@ function updateDashboard(querySelector, value){
     }
     document.querySelector(querySelector).innerText = value
 }
+
 
 
 function isFormulaEmpty(sring){
@@ -63,6 +71,77 @@ function isLastCharInteger(string){
 }
 
 
+
+// to make an array from the formula string, so that it can be looped through
+function stringToArr(string){
+    string = string.replaceAll('-',' - ').replaceAll('+',' + ').replaceAll('*',' * ').replaceAll('/',' / ').trim(' ').split(' ');
+    
+    if(string[0] === '-' || string[0] === '+'){
+        string[1] = string[0] + string[1]
+        string.shift()
+    }
+    return string;
+
+}
+
+
+//function. Default values that must be present
+function performCalculation(arr, symbol1 = '*',symbol2 = '/'){
+
+    //If the reccursive function passes in an array with 1 value, this value is the result
+    if(arr.length <= 1){
+        return arr; //the result
+    }
+
+    var found = false;
+    var i = 0;    
+
+    while(found === false && i <= arr.length - 1){        
+        if(arr[i] === symbol1 || arr[i] === symbol2){
+            found = true;
+
+            arr[i] = window[operations[arr[i]]](arr[i-1], arr[i+1])
+            arr.splice(i+1,1); arr.splice(i-1,1);
+
+            //reccursive method to continue searching for and perform the same reccursive function
+            return performCalculation(arr,symbol1,symbol2)
+
+        } 
+        i++; 
+    }
+
+    // this means that this round of the while loop did not find any * or / operations, time to move to + and -
+    if(found === false) return performCalculation(arr,'+','-');
+
+}
+
+
+const operations = {
+    '*':'multiply',
+    '/':'divide',
+    '+':'add',
+    '-':'subtract',
+}
+
+
+// operations - will be called based on the operations keys in the performCalculation method
+function add(x,y){
+    return parseFloat(x) + parseFloat(y)
+}
+
+function subtract(x,y){
+    return parseFloat(x) - parseFloat(y)
+}
+
+function multiply(x,y){
+    return parseFloat(x) * parseFloat(y)
+}
+function divide(x,y){
+    return parseFloat(x) / parseFloat(y)
+}
+
+
+
 //adding event listeners for all the calculator buttons
 function addListeners(){
     let btns = document.querySelectorAll('.calc-buttons .btn')
@@ -70,10 +149,10 @@ function addListeners(){
     btns.forEach(btn=>{
         btn.addEventListener('click',function(){
             let char = this.innerText
-
+            
             if(!isNaN(char)){
                 newNumber(char)
-
+                
             } else if(char == '-' || char == '+'){
                 newOperation(char)
                 
@@ -92,15 +171,16 @@ function addListeners(){
                 
             } else if(char == '='){
                 formula = calculate(formula);
-
+                
             } else if(char.toLowerCase() == 'del'){
                 formula = removeLastChar(formula)
-
+                console.log(formula);
+                
             } else if(char.toLowerCase() == 'reset'){
                 formula = ''
-
+                
             }
-
+            
             updateDashboard('.dashboard-text', formula)
         })
     })
